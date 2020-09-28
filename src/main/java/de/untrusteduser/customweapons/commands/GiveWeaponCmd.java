@@ -1,6 +1,7 @@
 package de.untrusteduser.customweapons.commands;
 
-import de.untrusteduser.customweapons.weapons.melee.FireRod;
+import de.untrusteduser.customweapons.tools.range.TeleportRod;
+import de.untrusteduser.customweapons.weapons.range.FireRod;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,7 +24,10 @@ public class GiveWeaponCmd implements CommandExecutor
                     switch (args[0].toLowerCase())
                     {
                         case "firerod":
-                            player.getInventory().addItem(FireRod.initFireRod(player));
+                            player.getInventory().addItem(FireRod.initFireRod());
+                            break;
+                        case "teleportrod":
+                            player.getInventory().addItem(TeleportRod.initTeleportRod());
                             break;
                         default:
                             break;
