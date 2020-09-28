@@ -1,7 +1,11 @@
 name: CustomWeapons
-version: @version@
+version: 1.0.0
 main: de.untrusteduser.customweapons.CustomWeapons
 api-version: 1.16
 authors: [UntrustedUser]
 description: Adds a bunch of different weapons to minecraft
 website: https://github.com/UntrustedUser
+
+commands:
+  cwg:
+    description: Gives you the custom weapon of your choice
