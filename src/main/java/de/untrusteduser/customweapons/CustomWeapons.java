@@ -1,7 +1,8 @@
 package de.untrusteduser.customweapons;
 
 import de.untrusteduser.customweapons.commands.GiveWeaponCmd;
-import de.untrusteduser.customweapons.weapons.melee.FireRod;
+import de.untrusteduser.customweapons.tools.range.TeleportRod;
+import de.untrusteduser.customweapons.weapons.range.FireRod;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +26,7 @@ public final class CustomWeapons extends JavaPlugin
         getCommand("cwg").setExecutor(new GiveWeaponCmd());
 
         pluginManager.registerEvents(new FireRod(), this);
+        pluginManager.registerEvents(new TeleportRod(), this);
     }
 
     @Override
