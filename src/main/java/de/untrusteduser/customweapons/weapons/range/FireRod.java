@@ -1,12 +1,10 @@
-package de.untrusteduser.customweapons.weapons.melee;
+package de.untrusteduser.customweapons.weapons.range;
 
 import de.untrusteduser.customweapons.CustomWeapons;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Fireball;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -19,24 +17,24 @@ import java.util.Objects;
 
 public class FireRod implements Listener
 {
-    private ArrayList<String> shotFireBall;
+    private final ArrayList<String> shotFireBall = new ArrayList<>();
 
-    public static ItemStack initFireRod(Player player)
+    public static ItemStack initFireRod()
     {
         ItemStack fireRod = new ItemStack(Material.BLAZE_ROD);
         ItemMeta fireRodMeta = fireRod.getItemMeta();
         fireRodMeta.setDisplayName(ChatColor.GOLD + "Fire Rod");
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.WHITE + "Shoot fireballs at your enemies");
-        fireRodMeta.setLore(lore);
+        ArrayList<String> fireRodLore = new ArrayList<>();
+        fireRodLore.add(ChatColor.WHITE + "Shoot fireballs at your enemies");
+        fireRodMeta.setLore(fireRodLore);
         fireRod.setItemMeta(fireRodMeta);
         return fireRod;
     }
 
     @EventHandler
-    public void FireRodShot(PlayerInteractEvent event)
+    public void FireRodUsed(PlayerInteractEvent event)
     {
-        if (Objects.requireNonNull(event.getItem()).getLore() != initFireRod(event.getPlayer()).getLore())
+        if (Objects.requireNonNull(event.getItem()).getLore() != initFireRod().getLore())
             return;
         if (event.getAction() != Action.RIGHT_CLICK_AIR)
             return;
