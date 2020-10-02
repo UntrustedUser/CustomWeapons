@@ -29,7 +29,7 @@ public class FireRod implements Listener {
     }
 
     @EventHandler
-    public void PlayerInteractListener(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() != null) {
             if (event.getItem().isSimilar(getFireRod())) {
                 if (event.getAction() == Action.RIGHT_CLICK_AIR) {

@@ -35,7 +35,7 @@ public class TeleportRod implements Listener {
     }
 
     @EventHandler
-    public void PlayerInteractListener(PlayerInteractEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() != null) {
             if (event.getItem().isSimilar(getTeleportRod())) {
                 if ((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
@@ -52,7 +52,7 @@ public class TeleportRod implements Listener {
     }
 
     @EventHandler
-    public void EntityDamageListener(EntityDamageEvent event) {
+    public void onEntityDamage(EntityDamageEvent event) {
         if (isImmune) {
             isImmune = false;
             Player player = (Player) event.getEntity();
@@ -62,7 +62,7 @@ public class TeleportRod implements Listener {
     }
 
     @EventHandler
-    public void CreatureSpawnListener(CreatureSpawnEvent event) {
+    public void onCreatureSpawn(CreatureSpawnEvent event) {
         if (isImmune) {
             if (event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL)) {
                 if (!event.getEntityType().equals(EntityType.ENDERMITE)) {
