@@ -9,14 +9,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
 
-public final class CustomWeapons extends JavaPlugin
-{
+public final class CustomWeapons extends JavaPlugin {
     public Logger logger;
     private static CustomWeapons plugin;
 
     @Override
-    public void onEnable()
-    {
+    public void onEnable() {
         plugin = this;
         logger = this.getLogger();
         PluginManager pluginManager = Bukkit.getPluginManager();
@@ -30,13 +28,11 @@ public final class CustomWeapons extends JavaPlugin
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
 
     }
 
-    public static CustomWeapons getPlugin()
-    {
+    public static CustomWeapons getPlugin() {
         return plugin;
     }
 }

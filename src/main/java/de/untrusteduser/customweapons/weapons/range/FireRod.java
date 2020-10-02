@@ -13,14 +13,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class FireRod implements Listener
-{
-    private final ArrayList<String> shotFireBall = new ArrayList<>();
+public class FireRod implements Listener {
+    private final ArrayList<String> fireRodCooldown = new ArrayList<>();
 
-    public static ItemStack initFireRod()
-    {
+    public static ItemStack getFireRod() {
         ItemStack fireRod = new ItemStack(Material.BLAZE_ROD);
         ItemMeta fireRodMeta = fireRod.getItemMeta();
         fireRodMeta.setDisplayName(ChatColor.GOLD + "Fire Rod");
@@ -32,19 +29,18 @@ public class FireRod implements Listener
     }
 
     @EventHandler
-    public void FireRodUsed(PlayerInteractEvent event)
-    {
-        if (Objects.requireNonNull(event.getItem()).getLore() != initFireRod().getLore())
-            return;
-        if (event.getAction() != Action.RIGHT_CLICK_AIR)
-            return;
-        if (shotFireBall.contains(event.getPlayer().getName()))
-            return;
-
-        shotFireBall.add(event.getPlayer().getName());
-        Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> shotFireBall.remove(event.getPlayer().getName()), 40);
-        Fireball fireBall = event.getPlayer().launchProjectile(Fireball.class);
-        fireBall.setIsIncendiary(true);
-        fireBall.setYield(0f);
+    public void PlayerInteractListener(PlayerInteractEvent event) {
+        if (event.getItem() != null) {
+            if (event.getItem().isSimilar(getFireRod())) {
+                if (event.getAction() == Action.RIGHT_CLICK_AIR) {
+                    if (!fireRodCooldown.contains(event.getPlayer().getName())) {
+                        fireRodCooldown.add(event.getPlayer().getName());
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> fireRodCooldown.remove(event.getPlayer().getName()), 80);
+                        Fireball fireBall = event.getPlayer().launchProjectile(Fireball.class);
+                        fireBall.setYield(0f);
+                    }
+                }
+            }
+        }
     }
 }
