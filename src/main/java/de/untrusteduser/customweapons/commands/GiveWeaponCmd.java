@@ -1,6 +1,6 @@
 package de.untrusteduser.customweapons.commands;
 
-import de.untrusteduser.customweapons.tools.range.TeleportRod;
+import de.untrusteduser.customweapons.weapons.range.TeleportRod;
 import de.untrusteduser.customweapons.weapons.range.FireRod;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;

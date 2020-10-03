@@ -1,10 +1,9 @@
-package de.untrusteduser.customweapons.tools.range;
+package de.untrusteduser.customweapons.weapons.range;
 
 import de.untrusteduser.customweapons.CustomWeapons;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import de.untrusteduser.customweapons.items.EnderStick;
+import de.untrusteduser.customweapons.items.MagicEnderEye;
+import org.bukkit.*;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -15,6 +14,8 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
+import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
@@ -23,10 +24,23 @@ public class TeleportRod implements Listener {
     private final ArrayList<String> teleportRodCooldown = new ArrayList<>();
     private boolean isImmune = false;
 
+    @Deprecated
+    public static ShapedRecipe addTeleportRodRecipe() {
+        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "teleport_rod");
+        RecipeChoice enderStick = new RecipeChoice.ExactChoice(EnderStick.getEnderStick());
+        RecipeChoice magicEnderEye = new RecipeChoice.ExactChoice(MagicEnderEye.getMagicEnderEye());
+        ShapedRecipe recipe = new ShapedRecipe(key, getTeleportRod());
+        recipe.shape("*E*", "*S*", "*S*");
+        recipe.setIngredient('E', magicEnderEye);
+        recipe.setIngredient('S', enderStick);
+        recipe.setIngredient('*', Material.AIR);
+        return recipe;
+    }
+
     public static ItemStack getTeleportRod() {
-        ItemStack teleportRod = new ItemStack(Material.STICK);
+        ItemStack teleportRod = new ItemStack(Material.DIAMOND_HOE);
         ItemMeta teleportRodMeta = teleportRod.getItemMeta();
-        teleportRodMeta.setDisplayName(ChatColor.GOLD + "Teleport Rod");
+        teleportRodMeta.setDisplayName(ChatColor.BLUE + "Teleport Rod");
         ArrayList<String> teleportRodLore = new ArrayList<>();
         teleportRodLore.add(ChatColor.WHITE + "Throw enderpearls with one click");
         teleportRodMeta.setLore(teleportRodLore);
@@ -65,7 +79,7 @@ public class TeleportRod implements Listener {
     public void onCreatureSpawn(CreatureSpawnEvent event) {
         if (isImmune) {
             if (event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL)) {
-                if (!event.getEntityType().equals(EntityType.ENDERMITE)) {
+                if (event.getEntityType().equals(EntityType.ENDERMITE)) {
                     event.setCancelled(true);
                 }
             }
