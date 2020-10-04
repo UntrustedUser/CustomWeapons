@@ -12,20 +12,21 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public class EnderStick {
-    public static ShapedRecipe addEnderStickRecipe() {
-        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "ender_stick");
-        ShapedRecipe recipe = new ShapedRecipe(key, getEnderStick());
+public class MagicEnderPearl {
+    @Deprecated
+    public static ShapedRecipe addItemRecipe() {
+        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "enchanted_ender_eye");
+        ShapedRecipe recipe = new ShapedRecipe(key, getItem());
         recipe.shape("EEE", "ESE", "EEE");
         recipe.setIngredient('E', Material.ENDER_PEARL);
-        recipe.setIngredient('S', Material.STICK);
+        recipe.setIngredient('S', Material.ENDER_EYE);
         return recipe;
     }
 
-    public static ItemStack getEnderStick() {
+    public static ItemStack getItem() {
         ItemStack item = new ItemStack(Material.STICK);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(ChatColor.GREEN + "Ender Stick");
+        meta.setDisplayName(ChatColor.GREEN + "Magic Ender Pearl");
         ArrayList<String> lore = new ArrayList<>();
         lore.add(ChatColor.BLUE + "Can be used to create ender-items");
         meta.setLore(lore);

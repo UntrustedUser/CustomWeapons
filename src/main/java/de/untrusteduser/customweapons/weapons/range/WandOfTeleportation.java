@@ -1,9 +1,10 @@
 package de.untrusteduser.customweapons.weapons.range;
 
 import de.untrusteduser.customweapons.CustomWeapons;
-import de.untrusteduser.customweapons.items.EnderStick;
-import de.untrusteduser.customweapons.items.MagicEnderEye;
+import de.untrusteduser.customweapons.items.EndStick;
+import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -13,6 +14,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
@@ -26,9 +28,9 @@ public class WandOfTeleportation implements Listener {
 
     @Deprecated
     public static ShapedRecipe addWandRecipe() {
-        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "teleport_rod");
-        RecipeChoice enderStick = new RecipeChoice.ExactChoice(EnderStick.getEnderStick());
-        RecipeChoice magicEnderEye = new RecipeChoice.ExactChoice(MagicEnderEye.getMagicEnderEye());
+        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "wand_of_teleportation");
+        RecipeChoice enderStick = new RecipeChoice.ExactChoice(EndStick.getItem());
+        RecipeChoice magicEnderEye = new RecipeChoice.ExactChoice(MagicEyeOfEnder.getItem());
         ShapedRecipe recipe = new ShapedRecipe(key, getWand());
         recipe.shape("*E*", "*S*", "*S*");
         recipe.setIngredient('E', magicEnderEye);
@@ -40,11 +42,13 @@ public class WandOfTeleportation implements Listener {
     public static ItemStack getWand() {
         ItemStack teleportRod = new ItemStack(Material.DIAMOND_HOE);
         ItemMeta teleportRodMeta = teleportRod.getItemMeta();
-        teleportRodMeta.setCustomModelData(1234567);
+        teleportRodMeta.setCustomModelData(44041);
         teleportRodMeta.setDisplayName(ChatColor.BLUE + "Wand of Teleportation");
         ArrayList<String> teleportRodLore = new ArrayList<>();
         teleportRodLore.add(ChatColor.WHITE + "Throw enderpearls with one click");
         teleportRodMeta.setLore(teleportRodLore);
+        teleportRodMeta.addEnchant(Enchantment.LURE, 1, true);
+        teleportRodMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         teleportRod.setItemMeta(teleportRodMeta);
         return teleportRod;
     }
