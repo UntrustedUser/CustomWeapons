@@ -29,28 +29,28 @@ public class WandOfTeleportation implements Listener {
     @Deprecated
     public static ShapedRecipe addWandRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "wand_of_teleportation");
-        RecipeChoice enderStick = new RecipeChoice.ExactChoice(EndStick.getItem());
-        RecipeChoice magicEnderEye = new RecipeChoice.ExactChoice(MagicEyeOfEnder.getItem());
+        RecipeChoice endStick = new RecipeChoice.ExactChoice(EndStick.getItem());
+        RecipeChoice magicEyeOfEnder = new RecipeChoice.ExactChoice(MagicEyeOfEnder.getItem());
         ShapedRecipe recipe = new ShapedRecipe(key, getWand());
         recipe.shape("*E*", "*S*", "*S*");
-        recipe.setIngredient('E', magicEnderEye);
-        recipe.setIngredient('S', enderStick);
+        recipe.setIngredient('E', magicEyeOfEnder);
+        recipe.setIngredient('S', endStick);
         recipe.setIngredient('*', Material.AIR);
         return recipe;
     }
 
     public static ItemStack getWand() {
-        ItemStack teleportRod = new ItemStack(Material.DIAMOND_HOE);
-        ItemMeta teleportRodMeta = teleportRod.getItemMeta();
-        teleportRodMeta.setCustomModelData(44041);
-        teleportRodMeta.setDisplayName(ChatColor.BLUE + "Wand of Teleportation");
-        ArrayList<String> teleportRodLore = new ArrayList<>();
-        teleportRodLore.add(ChatColor.WHITE + "Throw enderpearls with one click");
-        teleportRodMeta.setLore(teleportRodLore);
-        teleportRodMeta.addEnchant(Enchantment.LURE, 1, true);
-        teleportRodMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        teleportRod.setItemMeta(teleportRodMeta);
-        return teleportRod;
+        ItemStack item = new ItemStack(Material.DIAMOND_HOE);
+        ItemMeta meta = item.getItemMeta();
+        meta.setCustomModelData(44041);
+        meta.setDisplayName(ChatColor.BLUE + "Wand of Teleportation");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add(ChatColor.WHITE + "Throw enderpearls with one click");
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.LURE, 1, true);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        item.setItemMeta(meta);
+        return item;
     }
 
     @EventHandler

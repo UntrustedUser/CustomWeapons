@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class EndStick {
     public static ShapedRecipe addItemRecipe() {
-        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "ender_stick");
+        NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "end_stick");
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
         recipe.shape("EEE", "ESE", "EEE");
         recipe.setIngredient('E', Material.ENDER_PEARL);
@@ -25,9 +25,10 @@ public class EndStick {
     public static ItemStack getItem() {
         ItemStack item = new ItemStack(Material.STICK);
         ItemMeta meta = item.getItemMeta();
+        meta.setCustomModelData(44042);
         meta.setDisplayName(ChatColor.GREEN + "End Stick");
         ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.BLUE + "Can be used to create ender-items");
+        lore.add(ChatColor.BLUE + "Can be used to craft end items");
         meta.setLore(lore);
         meta.addEnchant(Enchantment.LURE, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);

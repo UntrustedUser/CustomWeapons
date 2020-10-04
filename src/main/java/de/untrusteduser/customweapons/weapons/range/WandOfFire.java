@@ -20,17 +20,17 @@ public class WandOfFire implements Listener {
     private final ArrayList<String> fireRodCooldown = new ArrayList<>();
 
     public static ItemStack getWand() {
-        ItemStack fireRod = new ItemStack(Material.BLAZE_ROD);
-        ItemMeta fireRodMeta = fireRod.getItemMeta();
-        fireRodMeta.setCustomModelData(44040);
-        fireRodMeta.setDisplayName(ChatColor.GOLD + "Wand of Fire");
-        ArrayList<String> fireRodLore = new ArrayList<>();
-        fireRodLore.add(ChatColor.WHITE + "Shoot fireballs at your enemies");
-        fireRodMeta.setLore(fireRodLore);
-        fireRodMeta.addEnchant(Enchantment.LURE, 1, true);
-        fireRodMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        fireRod.setItemMeta(fireRodMeta);
-        return fireRod;
+        ItemStack item = new ItemStack(Material.BLAZE_ROD);
+        ItemMeta meta = item.getItemMeta();
+        meta.setCustomModelData(44040);
+        meta.setDisplayName(ChatColor.GOLD + "Wand of Fire");
+        ArrayList<String> lore = new ArrayList<>();
+        lore.add(ChatColor.WHITE + "Shoot fireballs at your enemies");
+        meta.setLore(lore);
+        meta.addEnchant(Enchantment.LURE, 1, true);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        item.setItemMeta(meta);
+        return item;
     }
 
     @EventHandler

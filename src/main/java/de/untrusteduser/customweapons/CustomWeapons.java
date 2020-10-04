@@ -4,6 +4,8 @@ import de.untrusteduser.customweapons.commands.GiveWeaponCmd;
 import de.untrusteduser.customweapons.items.MagicEnderPearl;
 import de.untrusteduser.customweapons.items.EndStick;
 import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
+import de.untrusteduser.customweapons.listener.player.CraftEvent;
+import de.untrusteduser.customweapons.listener.player.InteractEvent;
 import de.untrusteduser.customweapons.listener.player.JoinEvent;
 import de.untrusteduser.customweapons.weapons.range.WandOfTeleportation;
 import de.untrusteduser.customweapons.weapons.range.WandOfFire;
@@ -34,6 +36,8 @@ public final class CustomWeapons extends JavaPlugin {
         getCommand("cwg").setExecutor(new GiveWeaponCmd());
 
         pluginManager.registerEvents(new JoinEvent(), this);
+        pluginManager.registerEvents(new CraftEvent(), this);
+        pluginManager.registerEvents(new InteractEvent(), this);
         pluginManager.registerEvents(new WandOfFire(), this);
         pluginManager.registerEvents(new WandOfTeleportation(), this);
     }
