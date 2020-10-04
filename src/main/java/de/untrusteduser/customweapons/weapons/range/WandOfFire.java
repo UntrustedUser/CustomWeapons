@@ -14,13 +14,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public class FireRod implements Listener {
+public class WandOfFire implements Listener {
     private final ArrayList<String> fireRodCooldown = new ArrayList<>();
 
-    public static ItemStack getFireRod() {
+    public static ItemStack getWand() {
         ItemStack fireRod = new ItemStack(Material.BLAZE_ROD);
         ItemMeta fireRodMeta = fireRod.getItemMeta();
-        fireRodMeta.setDisplayName(ChatColor.GOLD + "Fire Rod");
+        fireRodMeta.setDisplayName(ChatColor.GOLD + "Wand of Fire");
         ArrayList<String> fireRodLore = new ArrayList<>();
         fireRodLore.add(ChatColor.WHITE + "Shoot fireballs at your enemies");
         fireRodMeta.setLore(fireRodLore);
@@ -31,7 +31,7 @@ public class FireRod implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() != null) {
-            if (event.getItem().isSimilar(getFireRod())) {
+            if (event.getItem().isSimilar(getWand())) {
                 if (event.getAction() == Action.RIGHT_CLICK_AIR) {
                     if (!fireRodCooldown.contains(event.getPlayer().getName())) {
                         fireRodCooldown.add(event.getPlayer().getName());

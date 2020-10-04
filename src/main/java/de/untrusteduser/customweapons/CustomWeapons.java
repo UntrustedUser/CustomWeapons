@@ -4,8 +4,9 @@ import de.untrusteduser.customweapons.commands.GiveWeaponCmd;
 import de.untrusteduser.customweapons.items.EnchantedEnderEye;
 import de.untrusteduser.customweapons.items.EnderStick;
 import de.untrusteduser.customweapons.items.MagicEnderEye;
-import de.untrusteduser.customweapons.weapons.range.TeleportRod;
-import de.untrusteduser.customweapons.weapons.range.FireRod;
+import de.untrusteduser.customweapons.listener.player.OnJoin;
+import de.untrusteduser.customweapons.weapons.range.WandOfTeleportation;
+import de.untrusteduser.customweapons.weapons.range.WandOfFire;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,18 +27,15 @@ public final class CustomWeapons extends JavaPlugin {
         logger.info("Enabling Plugin");
 
         getServer().addRecipe(EnderStick.addEnderStickRecipe());
-        logger.info("4");
         getServer().addRecipe(EnchantedEnderEye.addEnchantedEnderEyeRecipe());
-        logger.info("3");
         getServer().addRecipe(MagicEnderEye.addMagicEnderEyeRecipe());
-        logger.info("2");
-        getServer().addRecipe(TeleportRod.addTeleportRodRecipe());
-        logger.info("1");
+        getServer().addRecipe(WandOfTeleportation.addWandRecipe());
 
         getCommand("cwg").setExecutor(new GiveWeaponCmd());
 
-        pluginManager.registerEvents(new FireRod(), this);
-        pluginManager.registerEvents(new TeleportRod(), this);
+        pluginManager.registerEvents(new OnJoin(), this);
+        pluginManager.registerEvents(new WandOfFire(), this);
+        pluginManager.registerEvents(new WandOfTeleportation(), this);
     }
 
     @Override

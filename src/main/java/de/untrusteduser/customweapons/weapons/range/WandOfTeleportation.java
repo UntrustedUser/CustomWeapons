@@ -20,16 +20,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
-public class TeleportRod implements Listener {
+public class WandOfTeleportation implements Listener {
     private final ArrayList<String> teleportRodCooldown = new ArrayList<>();
     private boolean isImmune = false;
 
     @Deprecated
-    public static ShapedRecipe addTeleportRodRecipe() {
+    public static ShapedRecipe addWandRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "teleport_rod");
         RecipeChoice enderStick = new RecipeChoice.ExactChoice(EnderStick.getEnderStick());
         RecipeChoice magicEnderEye = new RecipeChoice.ExactChoice(MagicEnderEye.getMagicEnderEye());
-        ShapedRecipe recipe = new ShapedRecipe(key, getTeleportRod());
+        ShapedRecipe recipe = new ShapedRecipe(key, getWand());
         recipe.shape("*E*", "*S*", "*S*");
         recipe.setIngredient('E', magicEnderEye);
         recipe.setIngredient('S', enderStick);
@@ -37,10 +37,11 @@ public class TeleportRod implements Listener {
         return recipe;
     }
 
-    public static ItemStack getTeleportRod() {
+    public static ItemStack getWand() {
         ItemStack teleportRod = new ItemStack(Material.DIAMOND_HOE);
         ItemMeta teleportRodMeta = teleportRod.getItemMeta();
-        teleportRodMeta.setDisplayName(ChatColor.BLUE + "Teleport Rod");
+        teleportRodMeta.setCustomModelData(1234567);
+        teleportRodMeta.setDisplayName(ChatColor.BLUE + "Wand of Teleportation");
         ArrayList<String> teleportRodLore = new ArrayList<>();
         teleportRodLore.add(ChatColor.WHITE + "Throw enderpearls with one click");
         teleportRodMeta.setLore(teleportRodLore);
@@ -51,7 +52,7 @@ public class TeleportRod implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() != null) {
-            if (event.getItem().isSimilar(getTeleportRod())) {
+            if (event.getItem().isSimilar(getWand())) {
                 if ((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                     if (!teleportRodCooldown.contains(event.getPlayer().getName())) {
                         teleportRodCooldown.add(event.getPlayer().getName());
@@ -60,6 +61,9 @@ public class TeleportRod implements Listener {
                         event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_ENDER_PEARL_THROW, 8, 1);
                         isImmune = true;
                     }
+                }
+                if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+                    event.setCancelled(true);
                 }
             }
         }

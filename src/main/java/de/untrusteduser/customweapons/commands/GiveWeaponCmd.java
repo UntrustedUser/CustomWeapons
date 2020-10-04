@@ -1,7 +1,7 @@
 package de.untrusteduser.customweapons.commands;
 
-import de.untrusteduser.customweapons.weapons.range.TeleportRod;
-import de.untrusteduser.customweapons.weapons.range.FireRod;
+import de.untrusteduser.customweapons.weapons.range.WandOfTeleportation;
+import de.untrusteduser.customweapons.weapons.range.WandOfFire;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,10 +17,10 @@ public class GiveWeaponCmd implements CommandExecutor {
                 if (args.length == 1) {
                     switch (args[0].toLowerCase()) {
                         case "firerod":
-                            player.getInventory().addItem(FireRod.getFireRod());
+                            player.getInventory().addItem(WandOfFire.getFireRod());
                             break;
                         case "teleportrod":
-                            player.getInventory().addItem(TeleportRod.getTeleportRod());
+                            player.getInventory().addItem(WandOfTeleportation.getEnderRod());
                             break;
                         default:
                             break;
