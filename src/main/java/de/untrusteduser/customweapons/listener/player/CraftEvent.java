@@ -16,19 +16,23 @@ import java.util.Arrays;
 public class CraftEvent implements Listener {
     private final ArrayList<ItemStack> itemExceptions = new ArrayList<>(Arrays.asList(WandOfFire.getWand(), WandOfTeleportation.getWand(), EndStick.getItem(), MagicEnderPearl.getItem(),
             MagicEyeOfEnder.getItem()));
+    private final ArrayList<String> confirmed = new ArrayList<>();
 
     @EventHandler
     public void onCraftItem(CraftItemEvent event) {
         if (event.getCurrentItem() != null) {
             if (itemExceptions.contains(event.getCurrentItem())) {
-                ArrayList<Boolean> confirmed = new ArrayList<>();
                 for (ItemStack item : itemExceptions) {
-                    confirmed.add(event.getRecipe().getResult().isSimilar(item));
+                    if (event.getRecipe().getResult().isSimilar(item)) {
+                        confirmed.add("true");
+                    } else {
+                        confirmed.add("false");
+                    }
                 }
-                if (!confirmed.contains(true)) {
+                if (!confirmed.contains("true")) {
                     event.setCancelled(true);
-                    confirmed.clear();
                 }
+                confirmed.clear();
             }
         }
     }

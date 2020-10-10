@@ -19,9 +19,9 @@ public class MagicEnderPearl {
     public static ShapedRecipe addItemRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "magic_ender_pearl");
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
-        recipe.shape("EEE", "ESE", "EEE");
-        recipe.setIngredient('E', Material.ENDER_PEARL);
-        recipe.setIngredient('S', Material.ENDER_EYE);
+        recipe.shape("PPP", "P*P", "PPP");
+        recipe.setIngredient('P', Material.ENDER_PEARL);
+        recipe.setIngredient('*', Material.AIR);
         return recipe;
     }
 

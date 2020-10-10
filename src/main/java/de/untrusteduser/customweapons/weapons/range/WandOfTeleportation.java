@@ -9,6 +9,7 @@ import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.CreatureSpawnEvent;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 
 public class WandOfTeleportation implements Listener {
     private final ArrayList<String> teleportRodCooldown = new ArrayList<>();
-    private boolean isImmune = false;
+    private Player thrower;
 
     @Deprecated
     public static ShapedRecipe addWandRecipe() {
@@ -63,7 +64,7 @@ public class WandOfTeleportation implements Listener {
                         Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> teleportRodCooldown.remove(event.getPlayer().getName()), 40);
                         event.getPlayer().launchProjectile(EnderPearl.class);
                         event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_ENDER_PEARL_THROW, 8, 1);
-                        isImmune = true;
+                        thrower = event.getPlayer();
                     }
                 }
                 if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
@@ -73,23 +74,25 @@ public class WandOfTeleportation implements Listener {
         }
     }
 
-    @EventHandler
-    public void onEntityDamage(EntityDamageEvent event) {
-        if (isImmune) {
-            isImmune = false;
-            Player player = (Player) event.getEntity();
-            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 8, 1);
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGH)
     public void onCreatureSpawn(CreatureSpawnEvent event) {
-        if (isImmune) {
+        if (thrower != null) {
             if (event.getSpawnReason().equals(CreatureSpawnEvent.SpawnReason.ENDER_PEARL)) {
                 if (event.getEntityType().equals(EntityType.ENDERMITE)) {
                     event.setCancelled(true);
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            if (player == thrower) {
+                thrower = null;
+                player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 8, 1);
+                event.setCancelled(true);
             }
         }
     }

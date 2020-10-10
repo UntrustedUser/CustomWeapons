@@ -19,9 +19,9 @@ public class MagicEyeOfEnder {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "magic_eye_of_ender");
         RecipeChoice magicEnderPearl = new RecipeChoice.ExactChoice(MagicEnderPearl.getItem());
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
-        recipe.shape("EEE", "E*E", "EEE");
-        recipe.setIngredient('E', magicEnderPearl);
-        recipe.setIngredient('*', Material.AIR);
+        recipe.shape("PPP", "PEP", "PPP");
+        recipe.setIngredient('P', magicEnderPearl);
+        recipe.setIngredient('E', Material.AIR);
         return recipe;
     }
 
