@@ -21,7 +21,7 @@ public class MagicEyeOfEnder {
         ShapedRecipe recipe = new ShapedRecipe(key, getItem());
         recipe.shape("PPP", "PEP", "PPP");
         recipe.setIngredient('P', magicEnderPearl);
-        recipe.setIngredient('E', Material.AIR);
+        recipe.setIngredient('E', Material.ENDER_EYE);
         return recipe;
     }
 
