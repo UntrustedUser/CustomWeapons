@@ -3,6 +3,7 @@ package de.untrusteduser.customweapons.weapons.range;
 import de.untrusteduser.customweapons.CustomWeapons;
 import de.untrusteduser.customweapons.items.EndStick;
 import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
+import de.untrusteduser.customweapons.utils.ItemCreator;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EnderPearl;
@@ -24,15 +25,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class WandOfTeleportation implements Listener {
-    private final ArrayList<String> teleportRodCooldown = new ArrayList<>();
+    private final ArrayList<String> wandOfTeleportationCooldown = new ArrayList<>();
     private Player thrower;
+    public static ItemStack wandOfTeleportation = ItemCreator.createItem(Material.DIAMOND_HOE, 44041,
+            ChatColor.BLUE + "Wand of Teleportation", ChatColor.WHITE + "Throw enderpearls with one click");
 
     @Deprecated
     public static ShapedRecipe addWandRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "wand_of_teleportation");
         RecipeChoice endStick = new RecipeChoice.ExactChoice(EndStick.getItem());
         RecipeChoice magicEyeOfEnder = new RecipeChoice.ExactChoice(MagicEyeOfEnder.getItem());
-        ShapedRecipe recipe = new ShapedRecipe(key, getWand());
+        ShapedRecipe recipe = new ShapedRecipe(key, wandOfTeleportation);
         recipe.shape("*E*", "*S*", "*S*");
         recipe.setIngredient('E', magicEyeOfEnder);
         recipe.setIngredient('S', endStick);
@@ -40,28 +43,14 @@ public class WandOfTeleportation implements Listener {
         return recipe;
     }
 
-    public static ItemStack getWand() {
-        ItemStack item = new ItemStack(Material.DIAMOND_HOE);
-        ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(44041);
-        meta.setDisplayName(ChatColor.BLUE + "Wand of Teleportation");
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.WHITE + "Throw enderpearls with one click");
-        meta.setLore(lore);
-        meta.addEnchant(Enchantment.LURE, 1, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        item.setItemMeta(meta);
-        return item;
-    }
-
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() != null) {
-            if (event.getItem().isSimilar(getWand())) {
+            if (event.getItem().isSimilar(wandOfTeleportation)) {
                 if ((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-                    if (!teleportRodCooldown.contains(event.getPlayer().getName())) {
-                        teleportRodCooldown.add(event.getPlayer().getName());
-                        Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> teleportRodCooldown.remove(event.getPlayer().getName()), 40);
+                    if (!wandOfTeleportationCooldown.contains(event.getPlayer().getName())) {
+                        wandOfTeleportationCooldown.add(event.getPlayer().getName());
+                        Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> wandOfTeleportationCooldown.remove(event.getPlayer().getName()), 40);
                         event.getPlayer().launchProjectile(EnderPearl.class);
                         event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_ENDER_PEARL_THROW, 8, 1);
                         thrower = event.getPlayer();

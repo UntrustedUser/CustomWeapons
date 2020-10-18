@@ -17,10 +17,10 @@ public class GiveWeaponCmd implements CommandExecutor {
                 if (args.length == 1) {
                     switch (args[0].toLowerCase()) {
                         case "wand_of_fire":
-                            player.getInventory().addItem(WandOfFire.getWand());
+                            player.getInventory().addItem(WandOfFire.wandOfFire);
                             break;
                         case "wand_of_teleportation":
-                            player.getInventory().addItem(WandOfTeleportation.getWand());
+                            player.getInventory().addItem(WandOfTeleportation.wandOfTeleportation);
                             break;
                         default:
                             break;
