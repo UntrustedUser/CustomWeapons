@@ -1,6 +1,7 @@
 package de.untrusteduser.customweapons.items;
 
 import de.untrusteduser.customweapons.CustomWeapons;
+import de.untrusteduser.customweapons.utils.ItemCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -15,27 +16,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class MagicEnderPearl {
+    public static ItemStack magicEnderPearl = ItemCreator.createItem(Material.ENDER_PEARL, 44043,
+            ChatColor.GREEN + "Magic Ender Pearl", ChatColor.BLUE + "Can be used to craft end items");
+
     @Deprecated
     public static ShapedRecipe addItemRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "magic_ender_pearl");
-        ShapedRecipe recipe = new ShapedRecipe(key, getItem());
+        ShapedRecipe recipe = new ShapedRecipe(key, magicEnderPearl);
         recipe.shape("PPP", "P*P", "PPP");
         recipe.setIngredient('P', Material.ENDER_PEARL);
         recipe.setIngredient('*', Material.AIR);
         return recipe;
-    }
-
-    public static ItemStack getItem() {
-        ItemStack item = new ItemStack(Material.ENDER_PEARL);
-        ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(44043);
-        meta.setDisplayName(ChatColor.GREEN + "Magic Ender Pearl");
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.BLUE + "Can be used to craft end items");
-        meta.setLore(lore);
-        meta.addEnchant(Enchantment.LURE, 1, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        item.setItemMeta(meta);
-        return item;
     }
 }

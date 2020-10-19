@@ -28,6 +28,7 @@ public class WandOfThunder implements Listener {
                         wandOfThunderCooldown.add(event.getPlayer().getName());
                         Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> wandOfThunderCooldown.remove(event.getPlayer().getName()), 80);
                         Block block = event.getPlayer().getTargetBlock(30);
+                        assert block != null;
                         event.getPlayer().getWorld().strikeLightning(block.getLocation());
                     }
                 }

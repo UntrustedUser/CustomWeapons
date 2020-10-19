@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 public class CraftEvent implements Listener {
     private final ArrayList<ItemStack> itemExceptions = new ArrayList<>(Arrays.asList(WandOfFire.wandOfFire, WandOfTeleportation.wandOfTeleportation,
-            EndStick.getItem(), MagicEnderPearl.getItem(), MagicEyeOfEnder.getItem()));
+            EndStick.endStick, MagicEnderPearl.magicEnderPearl, MagicEyeOfEnder.magicEyeOfEnder));
     private final ArrayList<String> confirmed = new ArrayList<>();
 
     @EventHandler

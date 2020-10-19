@@ -5,7 +5,6 @@ import de.untrusteduser.customweapons.items.EndStick;
 import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
 import de.untrusteduser.customweapons.utils.ItemCreator;
 import org.bukkit.*;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -16,11 +15,9 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 
@@ -33,8 +30,8 @@ public class WandOfTeleportation implements Listener {
     @Deprecated
     public static ShapedRecipe addWandRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "wand_of_teleportation");
-        RecipeChoice endStick = new RecipeChoice.ExactChoice(EndStick.getItem());
-        RecipeChoice magicEyeOfEnder = new RecipeChoice.ExactChoice(MagicEyeOfEnder.getItem());
+        RecipeChoice endStick = new RecipeChoice.ExactChoice(EndStick.endStick);
+        RecipeChoice magicEyeOfEnder = new RecipeChoice.ExactChoice(MagicEyeOfEnder.magicEyeOfEnder);
         ShapedRecipe recipe = new ShapedRecipe(key, wandOfTeleportation);
         recipe.shape("*E*", "*S*", "*S*");
         recipe.setIngredient('E', magicEyeOfEnder);

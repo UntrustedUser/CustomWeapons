@@ -1,6 +1,7 @@
 package de.untrusteduser.customweapons.items;
 
 import de.untrusteduser.customweapons.CustomWeapons;
+import de.untrusteduser.customweapons.utils.ItemCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -14,28 +15,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class MagicEyeOfEnder {
+    public static ItemStack magicEyeOfEnder = ItemCreator.createItem(Material.ENDER_EYE, 44044,
+            ChatColor.GREEN + "Magic Eye of Ender", ChatColor.BLUE + "Can be used to craft end items");
+
     @Deprecated
     public static ShapedRecipe addItemRecipe() {
         NamespacedKey key = new NamespacedKey(CustomWeapons.getPlugin(), "magic_eye_of_ender");
-        RecipeChoice magicEnderPearl = new RecipeChoice.ExactChoice(MagicEnderPearl.getItem());
-        ShapedRecipe recipe = new ShapedRecipe(key, getItem());
+        RecipeChoice magicEnderPearl = new RecipeChoice.ExactChoice(MagicEnderPearl.magicEnderPearl);
+        ShapedRecipe recipe = new ShapedRecipe(key, magicEyeOfEnder);
         recipe.shape("PPP", "PEP", "PPP");
         recipe.setIngredient('P', magicEnderPearl);
         recipe.setIngredient('E', Material.ENDER_EYE);
         return recipe;
-    }
-
-    public static ItemStack getItem() {
-        ItemStack item = new ItemStack(Material.ENDER_EYE);
-        ItemMeta meta = item.getItemMeta();
-        meta.setCustomModelData(44044);
-        meta.setDisplayName(ChatColor.GREEN + "Magic Eye of Ender");
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add(ChatColor.BLUE + "Can be used to craft end items");
-        meta.setLore(lore);
-        meta.addEnchant(Enchantment.LURE, 1, true);
-        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        item.setItemMeta(meta);
-        return item;
     }
 }

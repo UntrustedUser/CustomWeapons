@@ -9,6 +9,7 @@ import de.untrusteduser.customweapons.listener.player.InteractEvent;
 import de.untrusteduser.customweapons.listener.player.JoinEvent;
 import de.untrusteduser.customweapons.weapons.range.WandOfTeleportation;
 import de.untrusteduser.customweapons.weapons.range.WandOfFire;
+import de.untrusteduser.customweapons.weapons.range.WandOfThunder;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,6 +41,7 @@ public final class CustomWeapons extends JavaPlugin {
         pluginManager.registerEvents(new InteractEvent(), this);
         pluginManager.registerEvents(new WandOfFire(), this);
         pluginManager.registerEvents(new WandOfTeleportation(), this);
+        pluginManager.registerEvents(new WandOfThunder(), this);
     }
 
     @Override
