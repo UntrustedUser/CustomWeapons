@@ -39,7 +39,7 @@ public class GiveWeaponCmd implements CommandExecutor {
                         }
                     }
                 } else {
-                    player.sendMessage(ChatColor.BLUE + "[CustomWeapons] " + ChatColor.RED + "Please use " + ChatColor.GOLD + "/cwg <WEAPON>" + ChatColor.RED + "!");
+                    player.sendMessage(ChatColor.BLUE + "[CustomWeapons] " + ChatColor.RED + "Please use " + ChatColor.GOLD + "/cwg <PLAYER> <CATEGORY> <WEAPON>" + ChatColor.RED + "!");
                 }
             } else {
                 player.sendMessage(ChatColor.BLUE + "[CustomWeapons] " + ChatColor.RED + "You don't have the permissions to do that!");
