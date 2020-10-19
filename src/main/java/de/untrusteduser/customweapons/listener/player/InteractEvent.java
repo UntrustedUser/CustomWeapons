@@ -12,7 +12,7 @@ public class InteractEvent implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() != null) {
             if ((event.getAction() == Action.RIGHT_CLICK_AIR) || (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-                if ((event.getItem().isSimilar(MagicEnderPearl.getItem())) || (event.getItem().isSimilar(MagicEyeOfEnder.getItem()))) {
+                if ((event.getItem().isSimilar(MagicEnderPearl.magicEnderPearl)) || (event.getItem().isSimilar(MagicEyeOfEnder.magicEyeOfEnder))) {
                     event.setCancelled(true);
                 }
             }
