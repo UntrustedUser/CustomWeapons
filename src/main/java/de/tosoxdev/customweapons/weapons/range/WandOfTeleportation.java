@@ -1,9 +1,9 @@
-package de.untrusteduser.customweapons.weapons.range;
+package de.tosoxdev.customweapons.weapons.range;
 
-import de.untrusteduser.customweapons.CustomWeapons;
-import de.untrusteduser.customweapons.items.EndStick;
-import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
-import de.untrusteduser.customweapons.utils.ItemCreator;
+import de.tosoxdev.customweapons.CustomWeapons;
+import de.tosoxdev.customweapons.items.EndStick;
+import de.tosoxdev.customweapons.items.MagicEyeOfEnder;
+import de.tosoxdev.customweapons.utils.ItemCreator;
 import org.bukkit.*;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityType;

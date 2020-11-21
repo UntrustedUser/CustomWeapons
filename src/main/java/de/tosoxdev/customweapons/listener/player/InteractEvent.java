@@ -1,7 +1,7 @@
-package de.untrusteduser.customweapons.listener.player;
+package de.tosoxdev.customweapons.listener.player;
 
-import de.untrusteduser.customweapons.items.MagicEnderPearl;
-import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
+import de.tosoxdev.customweapons.items.MagicEnderPearl;
+import de.tosoxdev.customweapons.items.MagicEyeOfEnder;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;

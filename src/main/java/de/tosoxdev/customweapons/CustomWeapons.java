@@ -1,15 +1,15 @@
-package de.untrusteduser.customweapons;
+package de.tosoxdev.customweapons;
 
-import de.untrusteduser.customweapons.commands.GiveWeaponCmd;
-import de.untrusteduser.customweapons.items.MagicEnderPearl;
-import de.untrusteduser.customweapons.items.EndStick;
-import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
-import de.untrusteduser.customweapons.listener.player.CraftEvent;
-import de.untrusteduser.customweapons.listener.player.InteractEvent;
-import de.untrusteduser.customweapons.listener.player.JoinEvent;
-import de.untrusteduser.customweapons.weapons.range.WandOfTeleportation;
-import de.untrusteduser.customweapons.weapons.range.WandOfFire;
-import de.untrusteduser.customweapons.weapons.range.WandOfThunder;
+import de.tosoxdev.customweapons.commands.GiveWeaponCmd;
+import de.tosoxdev.customweapons.items.MagicEnderPearl;
+import de.tosoxdev.customweapons.items.EndStick;
+import de.tosoxdev.customweapons.items.MagicEyeOfEnder;
+import de.tosoxdev.customweapons.listener.player.CraftEvent;
+import de.tosoxdev.customweapons.listener.player.InteractEvent;
+import de.tosoxdev.customweapons.listener.player.JoinEvent;
+import de.tosoxdev.customweapons.weapons.range.WandOfTeleportation;
+import de.tosoxdev.customweapons.weapons.range.WandOfFire;
+import de.tosoxdev.customweapons.weapons.range.WandOfThunder;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -35,6 +35,7 @@ public final class CustomWeapons extends JavaPlugin {
         getServer().addRecipe(WandOfTeleportation.addWandRecipe());
 
         getCommand("cwg").setExecutor(new GiveWeaponCmd());
+        getCommand("cwg").setTabCompleter(new GiveWeaponCmd());
 
         pluginManager.registerEvents(new JoinEvent(), this);
         pluginManager.registerEvents(new CraftEvent(), this);

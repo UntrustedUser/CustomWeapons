@@ -1,19 +1,12 @@
-package de.untrusteduser.customweapons.items;
+package de.tosoxdev.customweapons.items;
 
-import de.untrusteduser.customweapons.CustomWeapons;
-import de.untrusteduser.customweapons.utils.ItemCreator;
+import de.tosoxdev.customweapons.CustomWeapons;
+import de.tosoxdev.customweapons.utils.ItemCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
 
 public class MagicEnderPearl {
     public static ItemStack magicEnderPearl = ItemCreator.createItem(Material.ENDER_PEARL, 44043,

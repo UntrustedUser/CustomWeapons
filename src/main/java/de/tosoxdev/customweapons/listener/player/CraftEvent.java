@@ -1,10 +1,10 @@
-package de.untrusteduser.customweapons.listener.player;
+package de.tosoxdev.customweapons.listener.player;
 
-import de.untrusteduser.customweapons.items.EndStick;
-import de.untrusteduser.customweapons.items.MagicEnderPearl;
-import de.untrusteduser.customweapons.items.MagicEyeOfEnder;
-import de.untrusteduser.customweapons.weapons.range.WandOfFire;
-import de.untrusteduser.customweapons.weapons.range.WandOfTeleportation;
+import de.tosoxdev.customweapons.items.EndStick;
+import de.tosoxdev.customweapons.items.MagicEnderPearl;
+import de.tosoxdev.customweapons.items.MagicEyeOfEnder;
+import de.tosoxdev.customweapons.weapons.range.WandOfFire;
+import de.tosoxdev.customweapons.weapons.range.WandOfTeleportation;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;

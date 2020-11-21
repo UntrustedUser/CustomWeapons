@@ -1,10 +1,10 @@
 name: CustomWeapons
 version: 1.0.0
-main: de.untrusteduser.customweapons.CustomWeapons
+main: de.tosoxdev.customweapons.CustomWeapons
 api-version: 1.16
-authors: [UntrustedUser]
+authors: [TosoxDev]
 description: Adds a bunch of different weapons to minecraft
-website: https://github.com/UntrustedUser
+website: https://github.com/TosoxDev
 
 commands:
   cwg:

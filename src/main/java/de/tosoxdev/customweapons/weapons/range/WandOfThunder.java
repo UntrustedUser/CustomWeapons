@@ -1,11 +1,11 @@
-package de.untrusteduser.customweapons.weapons.range;
+package de.tosoxdev.customweapons.weapons.range;
 
-import de.untrusteduser.customweapons.CustomWeapons;
-import de.untrusteduser.customweapons.utils.ItemCreator;
+import de.tosoxdev.customweapons.CustomWeapons;
+import de.tosoxdev.customweapons.utils.ItemCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -27,9 +27,10 @@ public class WandOfThunder implements Listener {
                     if (!wandOfThunderCooldown.contains(event.getPlayer().getName())) {
                         wandOfThunderCooldown.add(event.getPlayer().getName());
                         Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> wandOfThunderCooldown.remove(event.getPlayer().getName()), 80);
-                        Block block = event.getPlayer().getTargetBlock(30);
-                        assert block != null;
-                        event.getPlayer().getWorld().strikeLightning(block.getLocation());
+                        Location block = event.getPlayer().getTargetBlock(300).getLocation();
+                        if (block != null) {
+                            event.getPlayer().getWorld().strikeLightning(block);
+                        }
                     }
                 }
             }

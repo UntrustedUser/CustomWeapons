@@ -1,17 +1,12 @@
-package de.untrusteduser.customweapons.items;
+package de.tosoxdev.customweapons.items;
 
-import de.untrusteduser.customweapons.CustomWeapons;
-import de.untrusteduser.customweapons.utils.ItemCreator;
+import de.tosoxdev.customweapons.CustomWeapons;
+import de.tosoxdev.customweapons.utils.ItemCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
 
 public class EndStick {
     public static ItemStack endStick = ItemCreator.createItem(Material.STICK, 44042,

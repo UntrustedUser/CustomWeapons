@@ -1,7 +1,7 @@
-package de.untrusteduser.customweapons.weapons.range;
+package de.tosoxdev.customweapons.weapons.range;
 
-import de.untrusteduser.customweapons.CustomWeapons;
-import de.untrusteduser.customweapons.utils.ItemCreator;
+import de.tosoxdev.customweapons.CustomWeapons;
+import de.tosoxdev.customweapons.utils.ItemCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class WandOfFire implements Listener {
     private final ArrayList<String> fireRodCooldown = new ArrayList<>();
     public static ItemStack wandOfFire = ItemCreator.createItem(Material.BLAZE_ROD, 44040,
-            ChatColor.GOLD + "Wand of Fore", ChatColor.WHITE + "Shoot fireballs at your enemies");
+            ChatColor.GOLD + "Wand of Fire", ChatColor.WHITE + "Shoot fireballs at your enemies");
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -28,7 +28,7 @@ public class WandOfFire implements Listener {
                         fireRodCooldown.add(event.getPlayer().getName());
                         Bukkit.getScheduler().scheduleSyncDelayedTask(CustomWeapons.getPlugin(), () -> fireRodCooldown.remove(event.getPlayer().getName()), 80);
                         Fireball fireBall = event.getPlayer().launchProjectile(Fireball.class);
-                        fireBall.setYield(0f);
+                        fireBall.setYield(0.0f);
                     }
                 }
             }

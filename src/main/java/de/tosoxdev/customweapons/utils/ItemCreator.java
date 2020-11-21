@@ -1,4 +1,4 @@
-package de.untrusteduser.customweapons.utils;
+package de.tosoxdev.customweapons.utils;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
